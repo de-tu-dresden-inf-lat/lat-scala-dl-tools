@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.tu-dresden.lat</groupId>
+        <groupId>de.tu-dresden.inf.lat</groupId>
         <artifactId>lat-scala-dl-tools</artifactId>
         <version>0.4-SNAPSHOT</version>
     </parent>
@@ -23,7 +23,9 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <goals>
