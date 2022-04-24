@@ -1,0 +1,5 @@
+lib_managed
+target
+.bsp/sbt.json
+.idea/
+log.txt
