@@ -1,11 +1,10 @@
-Classes for printing OWL objects in DL syntax.
+Various classes to make work with OWL ontologies more convenient. Contains a formatter to format OWL ontologies using DL syntax, which can also be used from the command line to make it convenient to browse large OWL files. Provides new datastructures for representing OWL axioms and concepts to allow for a more convenient access from Scala using pattern matching (uses case classes). Provides a parser for a simplified DL syntax.
 
-Provides also for a main class for directly pretty printing an OWL file to the
-standard output. To use this functionality, compile with:
+To build a fat jar of he library, compile as follows:
 
 mvn clean assembly:single
 
-Then it can be used with
+Then the formatter can be used from the commad line as follows:
 
 java -cp target/scala-2.12/dl-pretty-printer-standalone.jar de.tu_dresden.lat.prettyPrinting.tools.formatting.SimpleDLFormatter OWL-FILE
 
