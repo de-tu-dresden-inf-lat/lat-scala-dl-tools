@@ -10,7 +10,7 @@
         <version>0.4-SNAPSHOT</version>
     </parent>
 
-    <artifactId>lat-scala-dl-tools-owlapi4</artifactId>
+    <artifactId>lat-scala-dl-tools-owlapi4_2.12</artifactId>
 
     <dependencies>
         <dependency>
