@@ -54,5 +54,5 @@ lazy val lat_scala_dl_tools_owlapi5 = Project(
   .settings(
     name := "lat-scala-dl-tools-owlapi5",
     libraryDependencies += "net.sourceforge.owlapi" % "owlapi-distribution" % "5.1.7",
-    scalaSource in Compile := file(file("lat-scala-dl-tools-owlapi5/src/main/scala").getAbsolutePath),
+    scalaSource in Compile := file(file("lat-scala-dl-tools-owlapi4/src/main/scala").getAbsolutePath),
   )

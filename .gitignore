@@ -3,5 +3,4 @@ target
 .bsp/sbt.json
 .idea/
 log.txt
-lat-scala-dl-tools-owlapi5.iml
-lat-scala-dl-tools-owlapi4.iml
+*.iml
