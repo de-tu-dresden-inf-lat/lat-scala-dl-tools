@@ -7,7 +7,7 @@
     <parent>
         <groupId>de.tu-dresden.inf.lat</groupId>
         <artifactId>lat-scala-dl-tools_2.12</artifactId>
-        <version>0.4-SNAPSHOT</version>
+        <version>0.4</version>
     </parent>
 
     <artifactId>lat-scala-dl-tools-owlapi5_2.12</artifactId>
