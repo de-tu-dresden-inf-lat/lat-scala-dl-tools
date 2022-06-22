@@ -4,3 +4,4 @@ target
 .idea/
 log.txt
 *.iml
+.flattened-pom.xml
