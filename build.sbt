@@ -7,7 +7,7 @@
 // General settings
 ThisBuild / name := "lat-scala-dl-tools"
 ThisBuild / organization := "de.tu-dresden.inf.lat"
-ThisBuild / version := "0.4"
+ThisBuild / version := "0.4.1-SNAPSHOT"
 ThisBuild / scalaVersion := "2.12.6" //"2.11.6"
 ThisBuild / testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a"))
 ThisBuild / assemblyJarName in assembly := name.value+"-standalone.jar"
