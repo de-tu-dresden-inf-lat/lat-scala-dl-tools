@@ -13,7 +13,7 @@
         <scala.version>2.12.6</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skipTests>true</skipTests>
-        <revision>0.4</revision>
+        <revision>0.4.1-SNAPSHOT</revision>
     </properties>
 
     <dependencies>
