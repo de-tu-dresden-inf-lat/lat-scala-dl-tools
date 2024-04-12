@@ -18,17 +18,17 @@ object SimpleOWLFormatter extends SimpleOWLFormatterCl(true, SimpleDLFormatter)
 
 object SimpleOWLFormatterLongNames extends SimpleOWLFormatterCl(false, SimpleDLFormatter)
 
-class SimpleOWLFormatterCl(simplifiedNames: Boolean = true, dlFormatter: SimpleDLFormatterCl = SimpleDLFormatter)
+class SimpleOWLFormatterCl(simplifiedNames: Boolean = true, dlFormatter: SimpleDLFormatterCl = SimpleDLFormatter, useLabels: Boolean = false)
   extends Formatter[OWLObject]  {
   def format(ontology: OWLOntology): String = {
-    converter = new OWLApiConverter(simplifiedNames, referenceOntology = Some(ontology))
+    converter = new OWLApiConverter(simplifiedNames=simplifiedNames, useLabels=useLabels, referenceOntology = Some(ontology))
     ontology.getLogicalAxioms(false).map(format).mkString("\n")
   }
 
-  var converter = new OWLApiConverter(simplifiedNames)
+  var converter = new OWLApiConverter(simplifiedNames=simplifiedNames,useLabels=useLabels)
 
   def setReferenceOntology(ontology: OWLOntology) = {
-    converter = new OWLApiConverter(simplifiedNames, referenceOntology = Some(ontology))
+    converter = new OWLApiConverter(simplifiedNames=simplifiedNames, referenceOntology = Some(ontology), useLabels = useLabels)
   }
 
   override def format(owlObject: OWLObject) = owlObject match {
@@ -60,7 +60,7 @@ object SimpleDLFormatter extends SimpleDLFormatterCl
   *  IRI, but some other representation may be used, based on the label of the entity or 
   *  the label of the IRI.  
   */  
-class SimpleDLFormatterCl(simplifyNames: Boolean = false) extends Formatter[Expression] {
+class SimpleDLFormatterCl(simplifyNames: Boolean = false,useLabels: Boolean = false) extends Formatter[Expression] {
 
   def main(args: Array[String]): Unit = { 
     val file = new File(args(0))
@@ -127,7 +127,7 @@ class SimpleDLFormatterCl(simplifyNames: Boolean = false) extends Formatter[Expr
   }
 
   def getName(iri: String) = {
-    if(!simplifyNames)
+    if(!simplifyNames || useLabels)
       iri
     else if(iri.contains('#'))
       iri.split('#').last

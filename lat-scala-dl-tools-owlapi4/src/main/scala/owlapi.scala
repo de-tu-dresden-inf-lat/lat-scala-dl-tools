@@ -114,7 +114,7 @@ class OWLParser(converter: OWLApiConverter = new OWLApiConverter()) {
 
 
 class OWLApiConverter(simplifiedNames: Boolean = true, 
-		    var referenceOntology: Option[OWLOntology] = None) {
+		    var referenceOntology: Option[OWLOntology] = None, useLabels: Boolean = false) {
 //  implicit val (logger, formatter, appender) =
 //  ZeroLoggerFactory.newLogger(this)
 
@@ -294,23 +294,28 @@ class OWLApiConverter(simplifiedNames: Boolean = true,
 
   def getName(owlObject: OWLEntity): String = 
     {
- //     getPreferedLabel(owlObject.getIRI) match {
- //	case Some(label) => "\"" + label+ "\""
-	//case _ =>
-    getEnglishLabel(owlObject.getIRI) match {
-	  case Some(label) => "\"" + label + "\""
-	  case 
-	  _ => 
-	    if(simplifiedNames) {
-              val iri = owlObject.getIRI.toString
-              if(iri.contains('#'))
-                iri.split('#').last
-              else
-                iri.split('/').last
-	      // owlObject.getIRI.getFragment
+      if(useLabels) {
+        getPreferedLabel(owlObject.getIRI) match {
+          case Some(label) => "\"" + label + "\""
+          case _ =>
+            getEnglishLabel(owlObject.getIRI) match {
+              case Some(label) => "\"" + label + "\""
+              case
+                _ =>
+                  owlObject.toString
             }
-	    else
-	      owlObject.toString
+        }
+      } else {
+        if (simplifiedNames) {
+          val iri = owlObject.getIRI.toString
+          if (iri.contains('#'))
+            iri.split('#').last
+          else
+            iri.split('/').last
+          // owlObject.getIRI.getFragment
+        }
+        else
+          owlObject.toString
 	}
    //   }
     }
