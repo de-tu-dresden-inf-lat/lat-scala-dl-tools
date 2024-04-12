@@ -18,8 +18,12 @@ object SimpleOWLFormatter extends SimpleOWLFormatterCl(true, SimpleDLFormatter)
 
 object SimpleOWLFormatterLongNames extends SimpleOWLFormatterCl(false, SimpleDLFormatter)
 
+object SimpleOWLFormatterLabels extends SimpleOWLFormatterCl(simplifiedNames =false, dlFormatter = new SimpleDLFormatterCl(false,true), useLabels = true)
+
 class SimpleOWLFormatterCl(simplifiedNames: Boolean = true, dlFormatter: SimpleDLFormatterCl = SimpleDLFormatter, useLabels: Boolean = false)
   extends Formatter[OWLObject]  {
+
+
   def format(ontology: OWLOntology): String = {
     converter = new OWLApiConverter(simplifiedNames=simplifiedNames, useLabels=useLabels, referenceOntology = Some(ontology))
     ontology.getLogicalAxioms(false).map(format).mkString("\n")
