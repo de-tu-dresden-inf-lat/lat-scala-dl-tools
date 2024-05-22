@@ -300,25 +300,30 @@ class OWLApiConverter(simplifiedNames: Boolean = true,
           case _ =>
             getEnglishLabel(owlObject.getIRI) match {
               case Some(label) => "\"" + label + "\""
-              case
-                _ =>
-                  owlObject.toString
+              case _ => getSimplifiedNameOrDefault(simplifiedNames,owlObject)
             }
         }
-      } else {
-        if (simplifiedNames) {
-          val iri = owlObject.getIRI.toString
-          if (iri.contains('#'))
-            iri.split('#').last
-          else
-            iri.split('/').last
-          // owlObject.getIRI.getFragment
-        }
-        else
-          owlObject.toString
-	}
-   //   }
-    }
+      } else
+          getSimplifiedNameOrDefault(simplifiedNames,owlObject)
+  }
+
+  def getSimplifiedNameOrDefault(simplifiedNames:Boolean, owlEntity:OWLEntity): String = {
+    if (simplifiedNames) 
+      getSimplifiedName(owlEntity)
+    
+    else
+      owlEntity.toString
+  }
+
+  def getSimplifiedName(owlEntity:OWLEntity): String = {
+    val iri = owlEntity.getIRI.toString
+    
+    if (iri.contains('#'))
+      iri.split('#').last
+   
+    else
+      iri.split('/').last
+  }
 
   def getPreferedLabel(iri: IRI) = {
     var result: Option[String] = None
