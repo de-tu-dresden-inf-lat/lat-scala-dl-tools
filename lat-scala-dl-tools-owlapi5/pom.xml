@@ -38,7 +38,7 @@
                                     <artifactId>lat-scala-dl-tools-owlapi4_2.12</artifactId>
                                     <version>${project.version}</version>
                                     <classifier>sources</classifier>
-                                    <overWrite>false</overWrite>
+                                    <overWrite>true</overWrite>
                                     <outputDirectory>${project.basedir}/target/src/main/scala</outputDirectory>
                                 </artifactItem>
                                 <artifactItem>
@@ -46,7 +46,7 @@
                                     <artifactId>lat-scala-dl-tools-owlapi4_2.12</artifactId>
                                     <version>${project.version}</version>
                                     <classifier>test-sources</classifier>
-                                    <overWrite>false</overWrite>
+                                    <overWrite>true</overWrite>
                                     <outputDirectory>${project.basedir}/target/src/test/scala</outputDirectory>
                                 </artifactItem>
                                 <artifactItem>
@@ -54,7 +54,7 @@
                                     <artifactId>lat-scala-dl-tools-owlapi4_2.12</artifactId>
                                     <version>${project.version}</version>
                                     <classifier>main-resources</classifier>
-                                    <overWrite>false</overWrite>
+                                    <overWrite>true</overWrite>
                                     <outputDirectory>${project.basedir}/target/src/main/resources</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
