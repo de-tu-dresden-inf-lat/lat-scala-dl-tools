@@ -111,6 +111,7 @@ class SimpleDLFormatterCl(simplifyNames: Boolean = false,useLabels: Boolean = fa
     case UniversalRoleRestriction(r, c) => FORALL + format(r) + "." + format(c)
     case MinNumberRestriction(n, r, c) => GEQ + n.toString + format(r) + "." + format(c)
     case MaxNumberRestriction(n, r, c) => LEQ + n.toString + format(r) + "." + format(c)
+    case EqNumberRestriction(n, r, c) => "=" + n.toString + format(r) + "." + format(c)
 
 //    case Subsumption(c, d) => format(c) + " \n\t" + SQ_SUBSETEQ + " " + format(d)
     case Subsumption(c, d) => format(c) + " " + SQ_SUBSETEQ + " " + format(d)
