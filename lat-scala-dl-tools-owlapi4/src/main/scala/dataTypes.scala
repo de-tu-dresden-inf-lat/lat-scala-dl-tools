@@ -670,6 +670,8 @@ object DLHelpers {
       MaxNumberRestriction(n-1, r, ConceptComplement(nnf(ConceptComplement(f))))
     case ConceptComplement(MaxNumberRestriction(n, r, f)) => 
       MinNumberRestriction(n+1, r, nnf(f))
+    case ConceptComplement(EqNumberRestriction(n, r, f)) =>
+      ConceptDisjunction(Seq(MaxNumberRestriction(n-1, r, nnf(f)), MinNumberRestriction(n+1, r, nnf(f))))
     case ConceptComplement(ConceptConjunction(cs)) => 
       ConceptDisjunction(cs.map(f => nnf(ConceptComplement(f))))
     case ConceptComplement(ConceptDisjunction(ds)) => 
@@ -681,6 +683,7 @@ object DLHelpers {
     case MinNumberRestriction(n, r, f) => MinNumberRestriction(n, r, nnf(f))
     case MaxNumberRestriction(n, r, f) => 
       MaxNumberRestriction(n, r, ConceptComplement(nnf(ConceptComplement(f))))
+    case EqNumberRestriction(n, r, f) => EqNumberRestriction(n, r, nnf(f))
     case ConceptConjunction(cs) => ConceptConjunction((cs.toSet[Concept].map(nnf)-TopConcept).toSeq)
     case ConceptDisjunction(ds) => ConceptDisjunction((ds.toSet[Concept].map(nnf)-BottomConcept).toSeq)
     case b: BaseConcept => b
@@ -706,6 +709,8 @@ object DLHelpers {
     case ExistentialRoleRestriction(r, f) => UniversalRoleRestriction(r, neg(f))
     case MinNumberRestriction(n, r, f) => MaxNumberRestriction(n-1, r, f)
     case MaxNumberRestriction(n, r, f) => MinNumberRestriction(n+1, r, f)
+    case EqNumberRestriction(n, r, f) =>
+      ConceptDisjunction(Seq(MaxNumberRestriction(n+1, r, f), MinNumberRestriction(n+1, r, f)))
   } 
 
   def conjunction(concepts: Iterable[Concept]): Concept = { 
@@ -872,6 +877,7 @@ object DLHelpers {
 	UniversalRoleRestriction(r, filler)
     case MinNumberRestriction(1, r, c) => simplify(ExistentialRoleRestriction(r,c))
     case MaxNumberRestriction(0, r, ConceptComplement(c)) => simplify(UniversalRoleRestriction(r,c))
+    case EqNumberRestriction(0, r, ConceptComplement(c)) => simplify(UniversalRoleRestriction(r,c))
     case MinNumberRestriction(n, r, c) => { 
       val filler = simplify(c)
       if(filler==BottomConcept)
@@ -884,7 +890,14 @@ object DLHelpers {
       if(filler==BottomConcept)
 	TopConcept
       else
-	MaxNumberRestriction(n, r, simplify(c))
+	MaxNumberRestriction(n, r, filler)
+    }
+    case EqNumberRestriction(n, r, c) => {
+      val filler = simplify(c)
+      if (filler==BottomConcept)
+        BottomConcept
+      else
+        EqNumberRestriction(n, r, filler)
     }
     case c => c
   }

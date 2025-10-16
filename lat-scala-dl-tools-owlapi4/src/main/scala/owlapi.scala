@@ -239,15 +239,10 @@ class OWLApiConverter(simplifiedNames: Boolean = true,
         convert(restriction.getProperty),
         convert(restriction.getFiller))
     case restriction: OWLObjectExactCardinality =>
-      ConceptConjunction(Seq(
-        MaxNumberRestriction(
-          restriction.getCardinality,
-		  convert(restriction.getProperty),
-		  convert(restriction.getFiller)),
-		MinNumberRestriction(
-          restriction.getCardinality,
-		  convert(restriction.getProperty),
-		  convert(restriction.getFiller))))
+      EqNumberRestriction(
+        restriction.getCardinality,
+		    convert(restriction.getProperty),
+		    convert(restriction.getFiller))
     case restriction: OWLObjectHasValue =>
       ExistentialRoleRestriction(
         convert(restriction.getProperty),
