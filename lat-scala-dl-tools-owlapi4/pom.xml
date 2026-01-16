@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.tu-dresden.inf.lat</groupId>
-        <artifactId>lat-scala-dl-tools_2.12</artifactId>
+        <groupId>io.github.de-tu-dresden-inf-lat</groupId>
+        <artifactId>lat-scala-dl-tools</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>lat-scala-dl-tools-owlapi4_2.12</artifactId>
+    <artifactId>lat-scala-dl-tools-owlapi4</artifactId>
 
     <dependencies>
         <dependency>

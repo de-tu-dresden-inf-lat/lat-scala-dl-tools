@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.tu-dresden.inf.lat</groupId>
-        <artifactId>lat-scala-dl-tools_2.12</artifactId>
+        <groupId>io.github.de-tu-dresden-inf-lat</groupId>
+        <artifactId>lat-scala-dl-tools</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>lat-scala-dl-tools-owlapi5_2.12</artifactId>
+    <artifactId>lat-scala-dl-tools-owlapi5</artifactId>
 
     <dependencies>
         <dependency>
@@ -35,7 +35,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>lat-scala-dl-tools-owlapi4_2.12</artifactId>
+                                    <artifactId>lat-scala-dl-tools-owlapi4</artifactId>
                                     <version>${project.version}</version>
                                     <classifier>sources</classifier>
                                     <overWrite>true</overWrite>
@@ -43,7 +43,7 @@
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>lat-scala-dl-tools-owlapi4_2.12</artifactId>
+                                    <artifactId>lat-scala-dl-tools-owlapi4</artifactId>
                                     <version>${project.version}</version>
                                     <classifier>test-sources</classifier>
                                     <overWrite>true</overWrite>
@@ -51,7 +51,7 @@
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>${project.groupId}</groupId>
-                                    <artifactId>lat-scala-dl-tools-owlapi4_2.12</artifactId>
+                                    <artifactId>lat-scala-dl-tools-owlapi4</artifactId>
                                     <version>${project.version}</version>
                                     <classifier>main-resources</classifier>
                                     <overWrite>true</overWrite>
