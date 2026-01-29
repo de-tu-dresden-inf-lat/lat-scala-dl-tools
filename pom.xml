@@ -7,8 +7,8 @@
     <groupId>io.github.de-tu-dresden-inf-lat</groupId>
     <artifactId>lat-scala-dl-tools</artifactId>
     <version>${revision}</version>
-    <packaging>pom</packaging>
 
+    <packaging>pom</packaging>
     <name>${project.groupId}.${project.artifactId}</name>
     <description>Various classes to make work with OWL ontologies more convenient.</description>
     <url>https://github.com/de-tu-dresden-inf-lat/lat-scala-dl-tools</url>
