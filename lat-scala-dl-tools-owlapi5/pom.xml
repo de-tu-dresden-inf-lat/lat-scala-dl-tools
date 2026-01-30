@@ -12,7 +12,7 @@
 
     <artifactId>lat-scala-dl-tools-owlapi5</artifactId>
     <name>${project.groupId}.${project.artifactId}</name>
-
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

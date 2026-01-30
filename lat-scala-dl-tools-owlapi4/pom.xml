@@ -12,6 +12,7 @@
 
     <artifactId>lat-scala-dl-tools-owlapi4</artifactId>
     <name>${project.groupId}.${project.artifactId}</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -40,6 +41,7 @@
                             <excludeResources>true</excludeResources>
                         </configuration>
                     </execution>
+                    <!-- 
                     <execution>
                         <id>create-test-jar</id>
                         <phase>verify</phase>
@@ -50,8 +52,10 @@
                             <excludeResources>true</excludeResources>
                         </configuration>
                     </execution>
+                    -->
                 </executions>
             </plugin>
+            <!-- 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -70,6 +74,7 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
         </plugins>
     </build>
 
